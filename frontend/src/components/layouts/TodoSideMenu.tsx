@@ -57,7 +57,6 @@ const TodoSideMenu = () => {
         tasks: [],
       })
     );
-    console.log(user);
     setNewList("New List");
   };
 

@@ -107,7 +107,6 @@ export const userSlice = createSlice({
       );
 
       state.value.lists[0].tasks = [action.payload, ...filteredArray];
-      console.log(state.value.lists[0].tasks);
     },
 
     removeTask(state, action) {
