@@ -23,7 +23,7 @@ import {
 import { v4 as uuid } from "uuid";
 import elipse from "../../images/elipse.png";
 import elipseCompleted from "../../images/Completed.png";
-// import { signOut } from "../../api/axiosFunctions";
+import { signOut } from "../../api/axiosFunctions";
 
 const TodoListTasks = () => {
   const [profileInfo, setProfileInfo] = useState(false);
@@ -38,7 +38,7 @@ const TodoListTasks = () => {
 
   const onLogOutHandler = () => {
     // Once backend works the line below will sign out user by removing local storage items
-    // signOut();
+    signOut();
     history.push("/sign-in");
   };
 
@@ -105,7 +105,7 @@ const TodoListTasks = () => {
                   />
                 </div>
                 <div className="w-[60%]">
-                  <p className="text-lg">{user?.email}</p>
+                  <p className="text-lg">{localStorage.getItem("email")}</p>
                   <button className="text-yellow-300 hover:underline text-md">
                     My Profile
                   </button>

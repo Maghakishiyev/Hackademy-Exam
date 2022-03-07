@@ -24,6 +24,10 @@ export const userSlice = createSlice({
   name: "user",
   initialState: { value: initialState },
   reducers: {
+    signIn(state, action) {
+      state.value = action.payload;
+    },
+
     signUp(state, action) {
       state.value = action.payload;
     },
@@ -107,6 +111,7 @@ export const userSlice = createSlice({
       );
 
       state.value.lists[0].tasks = [action.payload, ...filteredArray];
+      console.log(state.value.lists[0].tasks);
     },
 
     removeTask(state, action) {
@@ -128,6 +133,7 @@ export const {
   completeTask,
   selectTask,
   removeTask,
+  signIn,
 } = userSlice.actions;
 
 export default userSlice.reducer;

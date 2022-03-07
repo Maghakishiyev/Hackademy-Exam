@@ -1,10 +1,10 @@
 import Logo from "../images/LogoYellow3.png";
 import "../index.css";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { signUp } from "../features/user";
-// import isAuthenticated, { signUp } from "../api/axiosFunctions";
+import isAuthenticated, { signUpAxi } from "../api/axiosFunctions";
 
 const SignUp = () => {
   // Redux Dispatch
@@ -41,14 +41,15 @@ const SignUp = () => {
 
     if (validForm && matching) {
       // Once backend works the function below will send request to backend and register new user using its email and password
-      // const response = await signUp(email, password)
-      //   if (response) {
-      //       history.push('/todo/lists')
-      //   } else {
-      //       return
-      //   }
-      history.replace("/todo");
-      dispatch(signUp({ email: email, password: password }));
+      const response = await signUpAxi(email, password);
+      if (response) {
+        console.log(response);
+        dispatch(signUp({ email: email, password: password }));
+        history.push("/todo/lists");
+      } else {
+        return;
+      }
+      // history.replace("/todo");
     } else if (!validForm && matching) {
       setvalidMessage(false);
     } else if (validForm && !matching) {
@@ -57,7 +58,9 @@ const SignUp = () => {
   };
 
   // The line below will check if user is authenticated, if so, it will take him/her to /todo page
-  // useEffect(() => { isAuthenticated() && history.push('/todo) })
+  useEffect(() => {
+    isAuthenticated() && history.push("/todo");
+  });
 
   // Xml
   return (

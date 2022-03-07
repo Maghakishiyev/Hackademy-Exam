@@ -17,7 +17,7 @@ import { addList, removeList, chooseList } from "../../features/user";
 import { v4 as uuid } from "uuid";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-// import { signOut, createList } from "../../api/axiosFunctions";
+import { signOut, createList } from "../../api/axiosFunctions";
 
 const TodoSideMenu = () => {
   // States
@@ -42,7 +42,7 @@ const TodoSideMenu = () => {
 
   const onLogOutHandler = () => {
     // Once backend works the line below will sign out user by removing local storage items
-    // signOut();
+    signOut();
     history.push("/sign-in");
   };
 
@@ -57,6 +57,7 @@ const TodoSideMenu = () => {
         tasks: [],
       })
     );
+    console.log(user);
     setNewList("New List");
   };
 

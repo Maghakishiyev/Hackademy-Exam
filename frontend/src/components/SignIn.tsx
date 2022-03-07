@@ -3,9 +3,10 @@ import "../index.css";
 import Logo from "../images/LogoYellow3.png";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-// import { useEffect } from "react";
-// import isAuthenticated, { signIn } from "../api/axiosFunctions";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import isAuthenticated, { signInAxi } from "../api/axiosFunctions";
+import { signIn } from "../features/user";
 
 const SignIn = () => {
   // Redux data
@@ -19,6 +20,8 @@ const SignIn = () => {
   const [loginCredentials, setLoginCredentials] = useState<boolean>();
   const [wrongMessage, setWrongMessage] = useState<boolean>(true);
 
+  const dispatch = useDispatch();
+
   // History Hook
   const history = useHistory();
 
@@ -29,21 +32,23 @@ const SignIn = () => {
         password.trim().length > 0 &&
         email.trim().includes("@")
     );
-    setLoginCredentials(email === user.email && password === user.password);
   };
 
   // Submission
   const formSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (validForm && loginCredentials) {
+    if (validForm) {
       // Once backend works the function below will send request to backend and if there is a mail and password that matching it will return the response and after that user will be able to view the todo page
-      // const response = await signIn(email, password);
-      // if (response) {
-      // history.replace("/todo")
-      // } else {return}
-      history.push("/todo");
-    } else if (!validForm && loginCredentials) {
+      const response = await signInAxi(email, password);
+      if (response) {
+        history.replace("/todo");
+      } else {
+        setLoginCredentials(false);
+      }
+      // history.push("/todo");
+    }
+    if (!validForm && loginCredentials) {
       setvalidMessage(false);
     } else if (validForm && !loginCredentials) {
       setWrongMessage(false);
@@ -54,7 +59,9 @@ const SignIn = () => {
   };
 
   // The line below will check if user is authenticated, if so, it will take him/her to /todo page
-  // useEffect(() => { isAuthenticated() && history.push('/todo) })
+  useEffect(() => {
+    isAuthenticated() && history.push("/todo");
+  });
 
   return (
     <div id="signMain">

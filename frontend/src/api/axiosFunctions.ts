@@ -26,7 +26,7 @@ export const removeBearerAuth = (axios: AxiosInstance) => {
   axios.defaults.headers.common["Authorization"] = "";
 };
 
-export const signIn = async (email: string, password: string) => {
+export const signInAxi = async (email: string, password: string) => {
   // this function will sign in user by sending post request (using axios) to the backend (/user/signin)
   try {
     const response = await axios.post("/user/signin", {
@@ -47,7 +47,7 @@ export const signIn = async (email: string, password: string) => {
   }
 };
 
-export const signUp = async (email: string, password: string) => {
+export const signUpAxi = async (email: string, password: string) => {
   // this function will sign up user by sending post request (using axios) to the backend (/user/signup)
   try {
     await axios.post("/user/signup", {
@@ -55,12 +55,13 @@ export const signUp = async (email: string, password: string) => {
       password,
     });
   } catch (error) {
+    console.log("user allready");
     console.log(error);
     return false;
   }
 
   //   If response is positive it will sign in user with sign in function
-  return signIn(email, password);
+  return signInAxi(email, password);
 };
 
 export const signOut = (): void => {
