@@ -4,6 +4,8 @@ Standalone frontend version
 
 # How to start
 
+# For using frontend
+
 1. Clone repository
 2. Change directory to frontend folder
    (You must have node js intalled to execute next commands)
