@@ -18,6 +18,7 @@ const SignUp = () => {
   const [validForm, setValidForm] = useState<boolean>();
   const [validMessage, setvalidMessage] = useState<boolean>(true);
   const [matching, setMatching] = useState<boolean>(true);
+  const [ifUserExists, setIfUserExists] = useState(false);
 
   // Checking form validity
   const validChangeHandler = () => {
@@ -47,12 +48,16 @@ const SignUp = () => {
         dispatch(signUp({ email: email, password: password }));
         history.push("/todo/lists");
       } else {
+        setIfUserExists(true);
         return;
       }
       // history.replace("/todo");
     } else if (!validForm && matching) {
       setvalidMessage(false);
+      setIfUserExists(false);
+      return;
     } else if (validForm && !matching) {
+      setIfUserExists(false);
       return;
     }
   };
@@ -120,6 +125,12 @@ const SignUp = () => {
               <p className="text-red-500 text-xl my-1">
                 Please enter the same Password again!
               </p>
+            </div>
+          )}
+
+          {ifUserExists && (
+            <div>
+              <p className="text-red-500 text-xl my-1">User allready exists!</p>
             </div>
           )}
 

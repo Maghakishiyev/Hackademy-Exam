@@ -355,12 +355,32 @@ const TodoListTasks = () => {
                               <button className="p-4 ">
                                 {data.completed ? (
                                   <img
+                                    onClick={() => {
+                                      dispatch(
+                                        completeTask({
+                                          name: data.name,
+                                          id: data.id,
+                                          completed: false,
+                                        })
+                                      );
+                                      setTaskInfo(false);
+                                    }}
                                     src={elipseCompleted}
                                     alt="completed"
                                     className="min-w-[24px] max-w-[24px] h-[0.1%] mr-[3%]"
                                   />
                                 ) : (
                                   <img
+                                    onClick={() => {
+                                      dispatch(
+                                        completeTask({
+                                          name: data.name,
+                                          id: data.id,
+                                          completed: true,
+                                        })
+                                      );
+                                      setTaskInfo(false);
+                                    }}
                                     src={elipse}
                                     alt="notCompleted"
                                     className="min-w-[24px] max-w-[24px] h-[0.1%] mr-[3%]"

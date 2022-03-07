@@ -55,7 +55,6 @@ export const signUpAxi = async (email: string, password: string) => {
       password,
     });
   } catch (error) {
-    console.log("user allready");
     console.log(error);
     return false;
   }
