@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* Sign In page styles */
+
+#signMain {
+  background-image: url("./images/background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @apply w-screen h-screen flex items-center justify-center;
+}
+
+#signInContainer {
+  @apply w-1/3 h-1/2 bg-white shadow-lg p-[3%];
+}
+
+#signHeader {
+  @apply flex flex-col text-gray-500 font-medium text-3xl;
+}
+
+#signForm {
+  @apply font-normal text-2xl flex-auto flex-col justify-between;
+}
+
+#logo {
+  @apply flex;
+}
+
+#noAccaunt {
+  @apply flex font-medium text-lg;
+}
+
+#emailInput {
+  @apply w-[100%] h-12 outline-none border-b-[1px] border-gray-400  focus:border-yellow-300 text-gray-500 my-4;
+}
+
+#passwordInput {
+  @apply w-[100%] h-12 outline-none border-b-[1px] border-gray-400 focus:border-yellow-300 text-gray-500 mb-4;
+}
+
+#signInButtonDiv {
+  @apply flex items-end justify-end mt-5;
+}
+
+#signInButton {
+  @apply bg-yellow-300 p-3 px-14 hover:shadow-lg hover:bg-yellow-400;
+}
+
+/* Sign Up styles */
+
+#signUpContainer {
+  @apply w-1/3 h-[55%] bg-white shadow-lg p-[3%];
+}
+
+#emailInputUp {
+  @apply w-[100%] h-12 outline-none border-b-[1px] border-gray-400  focus:border-yellow-300 text-gray-500 my-4 mt-8;
+}
+
+#backButton {
+  @apply bg-gray-300 p-3 px-14 hover:shadow-lg hover:bg-gray-400 mr-[5%];
+}
+
+/* Forgot password styles */
+
+#forgotContainer {
+  @apply w-1/3 h-[40%] bg-white shadow-lg p-[3%];
+}
