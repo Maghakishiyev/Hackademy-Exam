@@ -52,6 +52,7 @@ const SignIn = () => {
       setvalidMessage(false);
     } else if (validForm && !loginCredentials) {
       setWrongMessage(false);
+      setvalidMessage(true);
     } else {
       setvalidMessage(false);
       setWrongMessage(false);
