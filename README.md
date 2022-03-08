@@ -16,6 +16,6 @@ Standalone frontend version
 
 1. Open new terminal
 2. Change your directory to backend folder
-3. In backend folder run `go mod init "backend"(if error occurs run `export GO111MODULE=on` and try running again)
+3. In backend folder run `go mod init "backend"`(if error occurs run `export GO111MODULE=on` and try running again)
 4. In backend folder run `go build`
 5. In backend folder run `go run backend`. (After that backend server will automaticaly run at localhost:8080)
